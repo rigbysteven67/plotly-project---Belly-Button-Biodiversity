@@ -1,4 +1,8 @@
+/**********************************/
+// Initialize the visualizatio
+
 d3.json('/samples').then(data => {
+    // grab a reference to the dropdown select element
     var selector = d3.select('#selDataset');
 
     var samplenames = data['names'];
@@ -12,6 +16,7 @@ d3.json('/samples').then(data => {
             .text(sample);
     });
 
+    //use the first sample from the list to build the initial plots
     var firstSample = samplenames[0];
 
     buildCharts(firstSample);
@@ -19,6 +24,8 @@ d3.json('/samples').then(data => {
 
 });
 
+/**********************************/
+// buildCharts function
 
 function buildCharts(sample) {
     d3.json('/samples').then(data => {
@@ -34,6 +41,9 @@ function buildCharts(sample) {
             title: 'Bacteria Cultures Per Sample',
             xaxis: {title: 'OTU ID'}
         };
+
+        /**********************************/
+        // build a bubble chart
 
         var bubbleData = [
             {
@@ -52,6 +62,8 @@ function buildCharts(sample) {
         Plotly.newPlot('bubble', bubbleData, bubbleLayout);
 
 
+        /**********************************/
+        // build a bar chart
 
         var yticks = otu_ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
         var barData = [
@@ -77,6 +89,8 @@ function buildCharts(sample) {
 };
 
 
+/**********************************/
+// buildMetadata function
 
 function buildMetadata(sample) {
     d3.json('/samples').then((data) => {
@@ -101,6 +115,8 @@ function buildMetadata(sample) {
     });
 };
 
+/**********************************/
+// buildGauge function
 
 function buildGauge(wash_frequency) {
     var data = [
@@ -135,7 +151,8 @@ function buildGauge(wash_frequency) {
 };
 
 
-
+/**********************************/
+// optionChanged function
 
 function optionChanged(newSample) {
     buildCharts(newSample);
