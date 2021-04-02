@@ -1,7 +1,5 @@
 # plotly-project---Belly Button Biodiversity
 
-Week 15 (and 16) Plot.ly Mini-Project - Belly Button Biodiversity
-
 https://stevens-plotly-project.herokuapp.com/ 
 
 For project, I built an interactive dashboard to explore the Belly Button Biodiversity dataset (http://robdunnlab.com/projects/belly-button-biodiversity/), which catalogs the microbes that colonize human navels. The data was served up from samples.json via a Flask endpoint.
